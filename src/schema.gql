@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateIngredientInput {
+  name: String!
+  price: Float!
+  qty: Float!
+}
+
+type Ingredient {
+  _id: String!
+  name: String!
+  price: String!
+  qty: String!
+}
+
+input ListIngredientInput {
+  _id: String
+  name: String
+  price: Float
+  qty: Float
+}
+
+type Mutation {
+  createIngredient(payload: CreateIngredientInput!): Ingredient!
+  deleteIngredient(_id: String!): Ingredient!
+  updateIngredient(payload: UpdateIngredientInput!): Ingredient!
+}
+
+type Query {
+  ingredient(_id: String!): Ingredient!
+  ingredients(filters: ListIngredientInput): [Ingredient!]!
+}
+
+input UpdateIngredientInput {
+  _id: String
+  name: String
+  price: Float
+  qty: Float
+}
