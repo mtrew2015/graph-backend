@@ -8,11 +8,31 @@ input CreateIngredientInput {
   qty: Float!
 }
 
+input CreateRecipeInput {
+  ingredients: [IngredientInput!]!
+  linkToRecipe: String!
+  name: String!
+  price: Float!
+  serves: Float!
+}
+
 type Ingredient {
   _id: String!
   name: String!
   price: String!
   qty: String!
+}
+
+input IngredientInput {
+  name: String!
+  price: Float!
+  serves: Float!
+}
+
+type IngredientObject {
+  name: String!
+  price: Float!
+  serves: Float!
 }
 
 input ListIngredientInput {
@@ -22,15 +42,37 @@ input ListIngredientInput {
   qty: Float
 }
 
+input ListRecipeInput {
+  _id: String
+  ingredients: [IngredientInput!]
+  linkToRecipe: String
+  name: String
+  price: Float
+  serves: Float
+}
+
 type Mutation {
   createIngredient(payload: CreateIngredientInput!): Ingredient!
+  createRecipe(payload: CreateRecipeInput!): Recipe!
   deleteIngredient(_id: String!): Ingredient!
+  deleteRecipe(_id: String!): Recipe!
   updateIngredient(payload: UpdateIngredientInput!): Ingredient!
+  updateRecipe(payload: UpdateRecipeInput!): Recipe!
 }
 
 type Query {
   ingredient(_id: String!): Ingredient!
   ingredients(filters: ListIngredientInput): [Ingredient!]!
+  recipe(_id: String!): Recipe!
+  recipes(filters: ListRecipeInput): [Recipe!]!
+}
+
+type Recipe {
+  _id: String!
+  ingredients: [IngredientObject!]!
+  linkToRecipe: String!
+  name: String!
+  serves: Float!
 }
 
 input UpdateIngredientInput {
@@ -38,4 +80,13 @@ input UpdateIngredientInput {
   name: String
   price: Float
   qty: Float
+}
+
+input UpdateRecipeInput {
+  _id: String
+  ingredients: [IngredientInput!]
+  linkToRecipe: String
+  name: String
+  price: Float
+  serves: Float
 }

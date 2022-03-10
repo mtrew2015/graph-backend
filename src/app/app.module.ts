@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { IngredientModule } from 'src/ingredient/ingredient.module';
+import { RecipeModule } from 'src/recipe/recipe.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { IngredientModule } from 'src/ingredient/ingredient.module';
       debug: false,
     }),
     IngredientModule,
+    RecipeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
