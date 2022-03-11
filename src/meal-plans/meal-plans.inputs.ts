@@ -1,43 +1,42 @@
 import { Schema as MongooseSchema } from 'mongoose';
 import { Field, InputType } from '@nestjs/graphql';
-import { IngredientObject } from './recipe.model';
 
 @InputType()
-export class CreateRecipeInput {
+export class CreateMealPlanInput {
   @Field(() => String)
   name: string;
   @Field(() => Number)
-  serves: number;
+  weekNumber: number;
   @Field(() => String)
-  linkToRecipe: string;
-  @Field(() => [IngredientObject])
-  ingredients: [IngredientObject];
+  userId: MongooseSchema.Types.ObjectId;
+  @Field(() => [String])
+  recipesSelected: MongooseSchema.Types.ObjectId[];
 }
 
 @InputType()
-export class ListRecipeInput {
+export class ListMealPlanInput {
   @Field(() => String, { nullable: true })
   _id?: MongooseSchema.Types.ObjectId;
   @Field(() => String, { nullable: true })
   name?: string;
   @Field(() => Number, { nullable: true })
-  serves?: number;
+  weekNumber?: number;
   @Field(() => String, { nullable: true })
-  linkToRecipe?: string;
-  @Field(() => [IngredientObject], { nullable: true })
-  ingredients?: [IngredientObject];
+  userId?: MongooseSchema.Types.ObjectId;
+  @Field(() => [String], { nullable: true })
+  recipesSelected?: MongooseSchema.Types.ObjectId[];
 }
 
 @InputType()
-export class UpdateRecipeInput {
+export class UpdateMealPlanInput {
   @Field(() => String, { nullable: true })
   _id?: MongooseSchema.Types.ObjectId;
   @Field(() => String, { nullable: true })
   name?: string;
   @Field(() => Number, { nullable: true })
-  serves?: number;
+  weekNumber?: number;
   @Field(() => String, { nullable: true })
-  linkToRecipe?: string;
-  @Field(() => [IngredientObject], { nullable: true })
-  ingredients?: [IngredientObject];
+  userId?: MongooseSchema.Types.ObjectId;
+  @Field(() => [String], { nullable: true })
+  recipesSelected?: MongooseSchema.Types.ObjectId[];
 }

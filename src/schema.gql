@@ -8,11 +8,17 @@ input CreateIngredientInput {
   qty: Float!
 }
 
+input CreateMealPlanInput {
+  name: String!
+  recipesSelected: [String!]!
+  userId: String!
+  weekNumber: Float!
+}
+
 input CreateRecipeInput {
   ingredients: [IngredientInput!]!
   linkToRecipe: String!
   name: String!
-  price: Float!
   serves: Float!
 }
 
@@ -48,12 +54,19 @@ input ListIngredientInput {
   qty: Float
 }
 
+input ListMealPlanInput {
+  _id: String
+  name: String
+  recipesSelected: [String!]
+  userId: String
+  weekNumber: Float
+}
+
 input ListRecipeInput {
   _id: String
   ingredients: [IngredientInput!]
   linkToRecipe: String
   name: String
-  price: Float
   serves: Float
 }
 
@@ -64,14 +77,24 @@ input ListUserInput {
   state: String
 }
 
+type MealPlan {
+  _id: String!
+  recipesSelected: [Recipe!]!
+  userId: String!
+  weekNumber: Float!
+}
+
 type Mutation {
   createIngredient(payload: CreateIngredientInput!): Ingredient!
+  createMealPlan(payload: CreateMealPlanInput!): MealPlan!
   createRecipe(payload: CreateRecipeInput!): Recipe!
   createUser(payload: CreateUserInput!): User!
   deleteIngredient(_id: String!): Ingredient!
+  deleteMealPlan(_id: String!): MealPlan!
   deleteRecipe(_id: String!): Recipe!
   deleteUser(_id: String!): User!
   updateIngredient(payload: UpdateIngredientInput!): Ingredient!
+  updateMealPlan(payload: UpdateMealPlanInput!): MealPlan!
   updateRecipe(payload: UpdateRecipeInput!): Recipe!
   updateUser(payload: UpdateUserInput!): User!
 }
@@ -79,6 +102,8 @@ type Mutation {
 type Query {
   ingredient(_id: String!): Ingredient!
   ingredients(filters: ListIngredientInput): [Ingredient!]!
+  mealPlan(_id: String!): MealPlan!
+  mealPlans(filters: ListMealPlanInput): [MealPlan!]!
   recipe(_id: String!): Recipe!
   recipes(filters: ListRecipeInput): [Recipe!]!
   user(_id: String!): User!
@@ -100,12 +125,19 @@ input UpdateIngredientInput {
   qty: Float
 }
 
+input UpdateMealPlanInput {
+  _id: String
+  name: String
+  recipesSelected: [String!]
+  userId: String
+  weekNumber: Float
+}
+
 input UpdateRecipeInput {
   _id: String
   ingredients: [IngredientInput!]
   linkToRecipe: String
   name: String
-  price: Float
   serves: Float
 }
 

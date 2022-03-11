@@ -9,6 +9,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { IngredientModule } from 'src/ingredient/ingredient.module';
 import { RecipeModule } from 'src/recipe/recipe.module';
 import { UserModule } from 'src/user/user.module';
+import { MealPlansModule } from 'src/meal-plans/meal-plans.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserModule } from 'src/user/user.module';
     IngredientModule,
     RecipeModule,
     UserModule,
+    MealPlansModule,
   ],
   controllers: [AppController],
   providers: [AppService],
