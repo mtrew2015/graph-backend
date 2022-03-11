@@ -8,6 +8,7 @@ import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { IngredientModule } from 'src/ingredient/ingredient.module';
 import { RecipeModule } from 'src/recipe/recipe.module';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { RecipeModule } from 'src/recipe/recipe.module';
     }),
     IngredientModule,
     RecipeModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

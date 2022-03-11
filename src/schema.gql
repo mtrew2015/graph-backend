@@ -16,6 +16,12 @@ input CreateRecipeInput {
   serves: Float!
 }
 
+input CreateUserInput {
+  email: String!
+  fullName: String!
+  state: String!
+}
+
 type Ingredient {
   _id: String!
   name: String!
@@ -51,13 +57,23 @@ input ListRecipeInput {
   serves: Float
 }
 
+input ListUserInput {
+  _id: String
+  email: String
+  fullName: String
+  state: String
+}
+
 type Mutation {
   createIngredient(payload: CreateIngredientInput!): Ingredient!
   createRecipe(payload: CreateRecipeInput!): Recipe!
+  createUser(payload: CreateUserInput!): User!
   deleteIngredient(_id: String!): Ingredient!
   deleteRecipe(_id: String!): Recipe!
+  deleteUser(_id: String!): User!
   updateIngredient(payload: UpdateIngredientInput!): Ingredient!
   updateRecipe(payload: UpdateRecipeInput!): Recipe!
+  updateUser(payload: UpdateUserInput!): User!
 }
 
 type Query {
@@ -65,6 +81,8 @@ type Query {
   ingredients(filters: ListIngredientInput): [Ingredient!]!
   recipe(_id: String!): Recipe!
   recipes(filters: ListRecipeInput): [Recipe!]!
+  user(_id: String!): User!
+  users(filters: ListUserInput): [User!]!
 }
 
 type Recipe {
@@ -89,4 +107,18 @@ input UpdateRecipeInput {
   name: String
   price: Float
   serves: Float
+}
+
+input UpdateUserInput {
+  _id: String
+  email: String
+  fullName: String
+  state: String
+}
+
+type User {
+  _id: String!
+  email: String!
+  fullName: String!
+  state: String!
 }
