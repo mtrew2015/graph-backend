@@ -10,6 +10,10 @@ export class MealPlan {
   @Field(() => String)
   _id: MongooseSchema.Types.ObjectId;
 
+  @Field(() => String)
+  @Prop()
+  name: string;
+
   @Field(() => Number)
   @Prop()
   weekNumber: number;

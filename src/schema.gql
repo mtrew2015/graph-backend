@@ -79,6 +79,7 @@ input ListUserInput {
 
 type MealPlan {
   _id: String!
+  name: String!
   recipesSelected: [Recipe!]!
   userId: String!
   weekNumber: Float!
