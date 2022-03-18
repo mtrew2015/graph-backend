@@ -19,6 +19,7 @@ export class IngredientObject {
 
 @ObjectType()
 @Schema()
+@InputType('RecipeInput')
 export class Recipe {
   @Field(() => String)
   _id: MongooseSchema.Types.ObjectId;

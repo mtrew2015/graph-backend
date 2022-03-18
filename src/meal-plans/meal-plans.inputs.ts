@@ -1,5 +1,6 @@
 import { Schema as MongooseSchema } from 'mongoose';
 import { Field, InputType } from '@nestjs/graphql';
+import { EntreeObjectInput } from './meal-plans.model';
 
 @InputType()
 export class CreateMealPlanInput {
@@ -9,8 +10,8 @@ export class CreateMealPlanInput {
   weekNumber: number;
   @Field(() => String)
   userId: MongooseSchema.Types.ObjectId;
-  @Field(() => [String])
-  recipesSelected: MongooseSchema.Types.ObjectId[];
+  @Field(() => [EntreeObjectInput])
+  entrees: MongooseSchema.Types.ObjectId;
 }
 
 @InputType()
@@ -23,8 +24,8 @@ export class ListMealPlanInput {
   weekNumber?: number;
   @Field(() => String, { nullable: true })
   userId?: MongooseSchema.Types.ObjectId;
-  @Field(() => [String], { nullable: true })
-  recipesSelected?: MongooseSchema.Types.ObjectId[];
+  @Field(() => [EntreeObjectInput], { nullable: true })
+  entrees?: EntreeObjectInput[];
 }
 
 @InputType()
@@ -37,6 +38,6 @@ export class UpdateMealPlanInput {
   weekNumber?: number;
   @Field(() => String, { nullable: true })
   userId?: MongooseSchema.Types.ObjectId;
-  @Field(() => [String], { nullable: true })
-  recipesSelected?: MongooseSchema.Types.ObjectId[];
+  @Field(() => [EntreeObjectInput], { nullable: true })
+  entrees?: EntreeObjectInput[];
 }
