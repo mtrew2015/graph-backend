@@ -10,6 +10,8 @@ export class CreateRecipeInput {
   serves: number;
   @Field(() => String)
   linkToRecipe: string;
+  @Field(() => String)
+  category: string;
   @Field(() => [IngredientObject])
   ingredients: [IngredientObject];
 }
@@ -24,6 +26,8 @@ export class ListRecipeInput {
   serves?: number;
   @Field(() => String, { nullable: true })
   linkToRecipe?: string;
+  @Field(() => String, { nullable: true })
+  category?: string;
   @Field(() => [IngredientObject], { nullable: true })
   ingredients?: [IngredientObject];
 }
@@ -38,6 +42,8 @@ export class UpdateRecipeInput {
   serves?: number;
   @Field(() => String, { nullable: true })
   linkToRecipe?: string;
+  @Field(() => String, { nullable: true })
+  category?: string;
   @Field(() => [IngredientObject], { nullable: true })
   ingredients?: [IngredientObject];
 }

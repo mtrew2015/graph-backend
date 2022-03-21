@@ -16,6 +16,7 @@ input CreateMealPlanInput {
 }
 
 input CreateRecipeInput {
+  category: String!
   ingredients: [IngredientInput!]!
   linkToRecipe: String!
   name: String!
@@ -68,6 +69,7 @@ input ListMealPlanInput {
 
 input ListRecipeInput {
   _id: String
+  category: String
   ingredients: [IngredientInput!]
   linkToRecipe: String
   name: String
@@ -121,6 +123,7 @@ type Query {
 
 type Recipe {
   _id: String!
+  category: String
   ingredients: [IngredientObject!]!
   linkToRecipe: String!
   name: String!
@@ -129,6 +132,7 @@ type Recipe {
 
 input RecipeInput {
   _id: String!
+  category: String
   ingredients: [IngredientInput!]!
   linkToRecipe: String!
   name: String!
@@ -152,6 +156,7 @@ input UpdateMealPlanInput {
 
 input UpdateRecipeInput {
   _id: String
+  category: String
   ingredients: [IngredientInput!]
   linkToRecipe: String
   name: String

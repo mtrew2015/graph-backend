@@ -28,6 +28,10 @@ export class Recipe {
   @Prop()
   name: string;
 
+  @Field(() => String, { nullable: true })
+  @Prop()
+  category?: string;
+
   @Field(() => String)
   @Prop()
   linkToRecipe: string;
