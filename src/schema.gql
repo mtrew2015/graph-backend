@@ -9,8 +9,8 @@ input CreateIngredientInput {
 }
 
 input CreateMealPlanInput {
+  entrees: [MealPlanInput!]!
   name: String!
-  recipesSelected: [String!]!
   userId: String!
   weekNumber: Float!
 }
@@ -26,6 +26,10 @@ input CreateUserInput {
   email: String!
   fullName: String!
   state: String!
+}
+
+type EntreeObject {
+  recipesSelected: [Recipe!]!
 }
 
 type Ingredient {
@@ -56,8 +60,8 @@ input ListIngredientInput {
 
 input ListMealPlanInput {
   _id: String
+  entrees: [MealPlanInput!]
   name: String
-  recipesSelected: [String!]
   userId: String
   weekNumber: Float
 }
@@ -79,10 +83,14 @@ input ListUserInput {
 
 type MealPlan {
   _id: String!
+  entrees: [EntreeObject!]!
   name: String!
-  recipesSelected: [Recipe!]!
   userId: String!
   weekNumber: Float!
+}
+
+input MealPlanInput {
+  recipesSelected: [String!]!
 }
 
 type Mutation {
@@ -119,6 +127,14 @@ type Recipe {
   serves: Float!
 }
 
+input RecipeInput {
+  _id: String!
+  ingredients: [IngredientInput!]!
+  linkToRecipe: String!
+  name: String!
+  serves: Float!
+}
+
 input UpdateIngredientInput {
   _id: String
   name: String
@@ -128,8 +144,8 @@ input UpdateIngredientInput {
 
 input UpdateMealPlanInput {
   _id: String
+  entrees: [MealPlanInput!]
   name: String
-  recipesSelected: [String!]
   userId: String
   weekNumber: Float
 }

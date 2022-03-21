@@ -4,6 +4,21 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 import { User } from 'src/user/user.model';
 import { Recipe } from 'src/recipe/recipe.model';
 
+@Schema()
+@ObjectType()
+export class EntreeObject {
+  @Field(() => [Recipe])
+  @Prop({ type: [MongooseSchema.Types.ObjectId], ref: Recipe.name })
+  recipesSelected: MongooseSchema.Types.ObjectId[];
+}
+@Schema()
+@InputType('MealPlanInput')
+export class EntreeObjectInput {
+  @Field(() => [String])
+  @Prop({ type: [MongooseSchema.Types.ObjectId], ref: Recipe.name })
+  recipesSelected: MongooseSchema.Types.ObjectId[];
+}
+
 @ObjectType()
 @Schema()
 export class MealPlan {
@@ -22,9 +37,9 @@ export class MealPlan {
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: User.name })
   userId: MongooseSchema.Types.ObjectId;
 
-  @Field(() => [Recipe])
-  @Prop({ type: [MongooseSchema.Types.ObjectId], ref: Recipe.name })
-  recipesSelected: MongooseSchema.Types.ObjectId[];
+  @Field(() => [EntreeObject])
+  @Prop()
+  entrees: EntreeObject[];
 }
 
 export type MealPlanDocument = MealPlan & Document;

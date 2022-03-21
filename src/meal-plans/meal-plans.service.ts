@@ -20,13 +20,28 @@ export class MealPlanService {
   }
 
   getById(_id: MongooseSchema.Types.ObjectId) {
-    return this.mealPlanModel.findById(_id).populate('recipesSelected').exec();
+    return this.mealPlanModel
+      .findById(_id)
+      .populate({
+        path: 'entrees',
+        populate: {
+          path: 'recipesSelected',
+          model: 'Recipe',
+        },
+      })
+      .exec();
   }
 
   list(filters: ListMealPlanInput) {
     return this.mealPlanModel
       .find({ ...filters })
-      .populate('recipesSelected')
+      .populate({
+        path: 'entrees',
+        populate: {
+          path: 'recipesSelected',
+          model: 'Recipe',
+        },
+      })
       .exec();
   }
 
